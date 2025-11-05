@@ -25,6 +25,6 @@ It supports delayed execution, retries with backoff, dead-letter queues, priorit
 ## 🛠️ Installation
 
 ```bash
-git clone <your-repo-url>
-cd queuectl
+git clone https://github.com/ahadnazar10/QueueCTL.git
+cd QueueCTL
 npm install
