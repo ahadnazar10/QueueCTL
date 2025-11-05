@@ -1,0 +1,9 @@
+
+queue.db
+queue.db-shm
+queue.db-wal
+
+
+node_modules/
+.env
+*.log
