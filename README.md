@@ -1,4 +1,4 @@
-# 🧰 QueueCTL — Job Queue & Worker System (Node.js + SQLite)
+# QueueCTL — Job Queue & Worker System (Node.js + SQLite)
 
 **QueueCTL** is a lightweight, CLI-driven job queue system built with **Node.js** and **SQLite**.  
 It supports delayed execution, retries with backoff, dead-letter queues, priorities, logging, and more — all managed with a single CLI tool.
@@ -28,3 +28,81 @@ It supports delayed execution, retries with backoff, dead-letter queues, priorit
 git clone https://github.com/ahadnazar10/QueueCTL.git
 cd QueueCTL
 npm install
+```
+## ⚙️ Database Setup
+
+Initialize (or update) your local SQLite database:
+```bash
+node src/db.js
+```
+💡 If queue.db doesn’t exist, it will be created automatically when you run node test.js or any queuectl command.
+
+## 🧑‍💻 CLI Usage
+Enqueue a Job
+```bash
+queuectl enqueue "echo 'Hello QueueCTL!'"
+```
+
+Schedule a Job
+```bash
+queuectl enqueue "echo 'This runs later!'" --run-at "2025-11-05T08:00:00Z"
+```
+
+Job with Priority
+```bash
+queuectl enqueue "echo 'High priority!'" --priority 5
+queuectl enqueue "echo 'Low priority!'" --priority 1
+```
+
+Start Worker(s)
+```bash
+queuectl worker start --count 2
+```
+List Jobs
+```bash
+queuectl list
+```
+
+View Dead Letter Queue
+```bash
+queuectl dlq list
+```
+
+View Logs for a Job
+```bash
+queuectl logs <job-id>
+```
+
+## ⚙️ Configuration
+
+Use config commands to customize behavior:
+```bash
+queuectl config set max-retries 3
+queuectl config set backoff-base 2
+queuectl config set job-timeout 3
+queuectl config get
+```
+
+🧪 End-to-End Test
+
+Run all features automatically:
+```bash
+node test.js
+```
+This script:
+
+-Sets up configuration
+
+-Enqueues normal, delayed, failed, and timeout jobs
+
+-Starts a worker
+
+-Waits 40s
+
+-Displays final job and DLQ summaries
+
+## Author
+
+Developed by Ahad
+
+A complete Node.js + SQLite job queue system with retry logic, delays, priorities, and logging.
