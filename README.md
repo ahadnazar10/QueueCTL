@@ -83,7 +83,7 @@ queuectl config set job-timeout 3
 queuectl config get
 ```
 
-🧪 End-to-End Test
+## 🧪 End-to-End Test
 
 Run all features automatically:
 ```bash
